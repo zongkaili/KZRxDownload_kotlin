@@ -1,15 +1,6 @@
 # KZRxDownload
 
-基于RxJava打造的下载工具, 支持多线程下载和断点续传, 智能判断是否支持断点续传等功能
-
-
 ## 效果图
-
-<img title="普通下载" width="30%" src="https://raw.githubusercontent.com/ssseasonnn/RxDownload/master/gif/basic_download.gif">
-<img title="Service下载" width="30%" src="https://raw.githubusercontent.com/ssseasonnn/RxDownload/master/gif/service_download.gif">
-<img title="下载管理"  width="33%" src="https://raw.githubusercontent.com/ssseasonnn/RxDownload/master/gif/download_manager.gif">
-
-
 
 ## 使用方式
 
