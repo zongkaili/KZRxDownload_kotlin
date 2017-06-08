@@ -1,0 +1,50 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+ext {
+    setup = [compileSdk: 25,
+             buildTools: "25.0.2",
+             minSdk    : 15,
+             targetSdk : 25,
+             vcode     : 1,
+             vname     : "1.0"]
+    versions = [libSupport    : "25.2.0",
+                libButterKnife: "8.4.0",
+                libRxJava     : "2.0.7",
+                libRxAndroid  : "2.0.1",
+                libRetrofit   : "2.2.0",
+                libOkhttp     : "3.6.0"]
+}
+
+buildscript {
+    ext.kotlin_version = '1.1.2-4'
+    ext.android_plugin_version = '2.3.0'
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.1'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+        classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3"
+        classpath 'com.jakewharton:butterknife-gradle-plugin:8.5.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+allprojects {
+    tasks.withType(Javadoc) {
+        options.addStringOption('Xdoclint:none', '-quiet')
+        options.addStringOption('encoding', 'UTF-8')
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

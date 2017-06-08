@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">KZRxDownload</string>
+    <string name="title_activity_main">Home Page</string>
+
+    <string name="single_task_download">Single task download</string>
+    <string name="multi_task_download">Multi task download</string>
+
+</resources>
