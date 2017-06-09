@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+//apply plugin: 'kotlin-kapt'
 apply plugin: 'com.jakewharton.butterknife'
 
 android {
@@ -35,6 +36,7 @@ android {
     }
 }
 
+//解决kotlin和dataBinding的冲突
 kapt {
     generateStubs = true
 }
@@ -46,12 +48,15 @@ dependencies {
     })
     compile "com.android.support:appcompat-v7:$rootProject.versions.libSupport"
     compile "com.android.support:design:$rootProject.versions.libSupport"
-    kapt "com.jakewharton:butterknife:$rootProject.versions.libButterKnife"
+
+    //butterknife
+    compile "com.jakewharton:butterknife:$rootProject.versions.libButterKnife"
+    compile 'com.jakewharton:kotterknife:0.1.0-SNAPSHOT'
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.versions.libButterKnife"
 
-//    compile 'com.squareup.picasso:picasso:2.5.2'
-//    compile 'zlc.season:practicalrecyclerview:1.0.8'
-//    compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.8.2@aar'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'zlc.season:practicalrecyclerview:1.0.8'
+    compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.8.2@aar'
 //    compile 'online.osslab:CircleProgress:1.0.0'
 
     compile project(':rxdownload')
@@ -63,4 +68,7 @@ dependencies {
 }
 repositories {
     mavenCentral()
+    maven {
+        url 'https://oss.sonatype.org/content/repositories/snapshots/'
+    }
 }

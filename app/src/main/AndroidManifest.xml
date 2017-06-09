@@ -18,8 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SingleDownloadActivity" />
-        <activity android:name=".MultiDownloadActivity"></activity>
+        <activity android:name=".MultiDownloadActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
