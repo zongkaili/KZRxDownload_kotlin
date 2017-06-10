@@ -8,6 +8,9 @@
     <string name="string_app_market">App Market</string>
     <string name="action_download_manage">Download Manager</string>
 
+    <string name="update">Update</string>
+    <string name="cancel">Cancel</string>
+
     <string-array name="name">
         <item>QQ</item>
         <item>网易云音乐</item>
@@ -39,5 +42,7 @@
         <item>http://zhstatic.zhihu.com/pkg/store/zhihu/futureve-mobile-update-release-4.10.1(443).apk</item>
         <item>http://zhstatic.zhihu.com/pkg/store/daily/zhihu-daily-zhihu-2.5.4(392).apk</item>
     </string-array>
+
+    <string name="gif">GIF</string>
 
 </resources>

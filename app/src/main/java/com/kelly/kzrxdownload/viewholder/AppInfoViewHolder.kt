@@ -6,14 +6,12 @@ import android.net.Uri
 import android.util.Log
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 
 import com.squareup.picasso.Picasso
 import com.tbruyelle.rxpermissions2.RxPermissions
 
-import butterknife.BindView
 import butterknife.ButterKnife
 import butterknife.OnClick
 import io.reactivex.functions.Consumer
@@ -24,25 +22,24 @@ import zlc.season.rxdownload2.entity.DownloadFlag
 import zlc.season.rxdownload2.function.Utils
 
 import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+import butterknife.bindView
+import com.facebook.drawee.view.SimpleDraweeView
 import com.kelly.kzrxdownload.R
 import com.kelly.kzrxdownload.model.AppInfoBean
 import com.kelly.kzrxdownload.model.DownloadController
+import com.twobbble.tools.FrescoUtil
 import zlc.season.rxdownload2.function.Utils.log
+import kotlin.reflect.KProperty
 
-class AppInfoViewHolder(parent: ViewGroup) : AbstractViewHolder<AppInfoBean>(parent, R.layout.app_info_item) {
-    @BindView(R.id.head)
-    internal var mHead: ImageView? = null
-    @BindView(R.id.title)
-    internal var mTitle: TextView? = null
-    @BindView(R.id.content)
-    internal var mContent: TextView? = null
-    @BindView(R.id.action)
-    internal var mAction: Button? = null
+class AppInfoViewHolder(parent: ViewGroup) : AbstractViewHolder<AppInfoBean>(parent, R.layout.item_app_info) {
+    var mHead: SimpleDraweeView by bindView(R.id.head)
+    var mTitle: TextView by bindView(R.id.title)
+    var mContent: TextView by bindView(R.id.content)
+    var mAction: Button by bindView(R.id.action)
+    var mContentImg: SimpleDraweeView by bindView(R.id.mContentImg)
 
     private var mData: AppInfoBean? = null
-
     private val mDownloadController: DownloadController
-
     private val mContext: Context
     private val mRxDownload: RxDownload
     private var downloadBean: DownloadBean? = null
@@ -51,16 +48,15 @@ class AppInfoViewHolder(parent: ViewGroup) : AbstractViewHolder<AppInfoBean>(par
     init {
         ButterKnife.bind(this, itemView)
         mContext = parent.context
-
         mRxDownload = RxDownload.getInstance(mContext)
-
-        mAction = parent.findViewById(R.id.action) as Button
         mDownloadController = DownloadController(TextView(mContext), mAction!!)
     }
 
     override fun setData(data: AppInfoBean) {
         this.mData = data
-        Picasso.with(mContext).load(data.img).into(mHead)
+        FrescoUtil.frescoLoadCircle(mHead, data.img)
+        FrescoUtil.frescoLoadNormal(mContentImg, null,
+                "https://cdn.dribbble.com/users/52084/screenshots/3556593/hcn_1x.jpg", null)
         mTitle!!.setText(data.name)
         mContent!!.setText(data.info)
 
@@ -134,3 +130,7 @@ class AppInfoViewHolder(parent: ViewGroup) : AbstractViewHolder<AppInfoBean>(par
         }
     }
 }
+
+private operator fun  Any.setValue(appInfoViewHolder: AppInfoViewHolder, property: KProperty<*>, simpleDraweeView: SimpleDraweeView) {}
+private operator fun  Any.setValue(appInfoViewHolder: AppInfoViewHolder, property: KProperty<*>, textView: TextView) {}
+private operator fun  Any.setValue(appInfoViewHolder: AppInfoViewHolder, property: KProperty<*>, button: Button) {}

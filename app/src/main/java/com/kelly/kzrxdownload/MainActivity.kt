@@ -4,14 +4,18 @@ import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.Toolbar
 import android.view.View
 import android.widget.Toast
+import butterknife.bindView
 import com.kelly.kzrxdownload.databinding.ActivityMainBinding
 
 import zlc.season.rxdownload2.RxDownload
 import zlc.season.rxdownload2.function.Utils
+import kotlin.reflect.KProperty
 
 class MainActivity : AppCompatActivity() {
+    var mToorBar: Toolbar by bindView(R.id.toolbar)
     companion object {
         // Used to load the 'native-lib' library on application startup.
         init {
@@ -34,6 +38,14 @@ class MainActivity : AppCompatActivity() {
         RxDownload.getInstance(this)
                 .maxDownloadNumber(2)
                 .maxThread(3)
+        bindEvent()
+    }
+
+    private fun bindEvent(){
+        mToorBar.setNavigationOnClickListener {
+            Toast.makeText(this@MainActivity, "Why did you click me?", Toast.LENGTH_SHORT).show()
+//            EventBus.getDefault().post(OpenDrawerEvent())
+        }
     }
 
 
@@ -48,3 +60,5 @@ class MainActivity : AppCompatActivity() {
     }
 
 }
+
+private operator fun  Any.setValue(mainActivity: MainActivity, property: KProperty<*>, toolbar: Toolbar) {}

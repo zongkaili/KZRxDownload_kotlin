@@ -2,7 +2,7 @@
 ext {
     setup = [compileSdk: 25,
              buildTools: "25.0.2",
-             minSdk    : 15,
+             minSdk    : 21,
              targetSdk : 25,
              vcode     : 1,
              vname     : "1.0"]

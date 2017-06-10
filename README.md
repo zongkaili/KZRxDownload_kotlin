@@ -2,6 +2,13 @@
 
 ## 效果图
 
+## 包含技术
+kotlin
+Facebook Fresco
+Tencent Bugly
+Vector矢量图
+
+
 ## 使用方式
 
 ### 准备工作

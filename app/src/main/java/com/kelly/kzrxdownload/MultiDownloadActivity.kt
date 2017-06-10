@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.Toolbar
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import butterknife.BindView
@@ -19,25 +20,19 @@ import kotlin.reflect.KProperty
 
 
 class MultiDownloadActivity : AppCompatActivity() {
-//    var mToolbar: Toolbar by bindView(R.id.toolbar)
-    @BindView(R.id.toolbar)
-    lateinit var mToolbar: Toolbar
-
-    @BindView(R.id.recycler)
-    var mRecycler: PracticalRecyclerView? = null
-
+    var mToolbar: Toolbar by bindView(R.id.toolbar)
+    var mRecycler: PracticalRecyclerView by bindView(R.id.recycler)
     var mAdapter: AppInfoAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_multi_download)
         ButterKnife.bind(this)
-        mToolbar = findViewById(R.id.toolbar) as Toolbar
         setSupportActionBar(mToolbar)
         supportActionBar?.setHomeButtonEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         mAdapter = AppInfoAdapter()
-        mRecycler = findViewById(R.id.recycler) as PracticalRecyclerView
         mRecycler?.setLayoutManager(LinearLayoutManager(this))
         mRecycler?.setAdapterWithLoading(mAdapter)
         loadData()
@@ -65,7 +60,7 @@ class MultiDownloadActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when(item?.itemId){
-            R.id.home -> finish()
+            android.R.id.home-> finish()
             R.id.action_download_manage -> startActivity(Intent(this,MultiDownloadActivity::class.java))
         }
         return super.onOptionsItemSelected(item)
@@ -78,4 +73,5 @@ class MultiDownloadActivity : AppCompatActivity() {
     }
 }
 
-//private operator fun  Any.setValue(multiDownloadActivity: MultiDownloadActivity, property: KProperty<*>, toolbar: Toolbar) {}
+private operator fun  Any.setValue(multiDownloadActivity: MultiDownloadActivity, property: KProperty<*>, toolbar: Toolbar) {}
+private operator fun  Any.setValue(multiDownloadActivity: MultiDownloadActivity, property: KProperty<*>, practicalRecyclerView: PracticalRecyclerView) {}
