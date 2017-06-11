@@ -61,7 +61,7 @@ class MultiDownloadActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when(item?.itemId){
             android.R.id.home-> finish()
-            R.id.action_download_manage -> startActivity(Intent(this,MultiDownloadActivity::class.java))
+            R.id.action_download_manage -> startActivity(Intent(this,DownloadManagerActivity::class.java))
         }
         return super.onOptionsItemSelected(item)
     }

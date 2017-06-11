@@ -22,6 +22,7 @@ import zlc.season.rxdownload2.entity.DownloadFlag
 import zlc.season.rxdownload2.function.Utils
 
 import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+import android.view.View
 import butterknife.bindView
 import com.facebook.drawee.view.SimpleDraweeView
 import com.kelly.kzrxdownload.R
@@ -50,6 +51,7 @@ class AppInfoViewHolder(parent: ViewGroup) : AbstractViewHolder<AppInfoBean>(par
         mContext = parent.context
         mRxDownload = RxDownload.getInstance(mContext)
         mDownloadController = DownloadController(TextView(mContext), mAction!!)
+        bindEvent()
     }
 
     override fun setData(data: AppInfoBean) {
@@ -83,6 +85,23 @@ class AppInfoViewHolder(parent: ViewGroup) : AbstractViewHolder<AppInfoBean>(par
                 }
     }
 
+    private fun bindEvent() {
+        mAction.setOnClickListener { v: View? -> mDownloadController.handleClick(object : DownloadController.Callback {
+            override fun startDownload() {
+                start()
+            }
+
+            override fun pauseDownload() {
+                pause()
+            }
+
+            override fun install() {
+                installApk()
+            }
+        }) }
+    }
+
+    //TODO 此注解不起作用
     @OnClick(R.id.action)
     fun onClick() {
         mDownloadController.handleClick(object : DownloadController.Callback {
@@ -131,6 +150,6 @@ class AppInfoViewHolder(parent: ViewGroup) : AbstractViewHolder<AppInfoBean>(par
     }
 }
 
-private operator fun  Any.setValue(appInfoViewHolder: AppInfoViewHolder, property: KProperty<*>, simpleDraweeView: SimpleDraweeView) {}
-private operator fun  Any.setValue(appInfoViewHolder: AppInfoViewHolder, property: KProperty<*>, textView: TextView) {}
-private operator fun  Any.setValue(appInfoViewHolder: AppInfoViewHolder, property: KProperty<*>, button: Button) {}
+private operator fun Any.setValue(appInfoViewHolder: AppInfoViewHolder, property: KProperty<*>, simpleDraweeView: SimpleDraweeView) {}
+private operator fun Any.setValue(appInfoViewHolder: AppInfoViewHolder, property: KProperty<*>, textView: TextView) {}
+private operator fun Any.setValue(appInfoViewHolder: AppInfoViewHolder, property: KProperty<*>, button: Button) {}

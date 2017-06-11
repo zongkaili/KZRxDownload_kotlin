@@ -26,6 +26,8 @@
         </activity>
         <activity android:name=".MultiDownloadActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".DownloadManagerActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
