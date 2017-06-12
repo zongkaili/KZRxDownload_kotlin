@@ -165,5 +165,4 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 }
 
 private operator fun  Any.setValue(homeActivity: HomeActivity, property: KProperty<*>, navigationView: NavigationView) {}
-
 private operator fun  Any.setValue(homeActivity: HomeActivity, property: KProperty<*>, drawerLayout: DrawerLayout) {}

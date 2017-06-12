@@ -1,14 +1,15 @@
 package com.kelly.kzrxdownload.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.Toolbar
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.RelativeLayout
 import android.widget.Toast
 import butterknife.bindView
+import com.kelly.kzrxdownload.DownloadManagerActivity
 import com.kelly.kzrxdownload.R
 import com.kelly.kzrxdownload.adapter.AppInfoAdapter
 import com.kelly.kzrxdownload.model.AppInfoBean
@@ -29,16 +30,15 @@ class HomeFragment : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        var rootView = LayoutInflater.from(activity).inflate(R.layout.fragment_home, null)
-        mRecycler = rootView.findViewById(R.id.recycler) as PracticalRecyclerView
-        mAdapter = AppInfoAdapter()
-        mRecycler?.setLayoutManager(LinearLayoutManager(activity))
-        mRecycler?.setAdapterWithLoading(mAdapter)
-        loadData()
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
         return LayoutInflater.from(activity).inflate(R.layout.fragment_home, null)
+    }
+
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        init()
+        loadData()
     }
 
     override fun onStart() {
@@ -48,6 +48,23 @@ class HomeFragment : BaseFragment() {
 
     override fun onBackPressed() {
         super.onBackPressed()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        activity.menuInflater.inflate(R.menu.menu_download_manage,menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId){
+            R.id.action_download_manage -> startActivity(Intent(activity, DownloadManagerActivity::class.java))
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun init() {
+        mAdapter = AppInfoAdapter()
+        mRecycler?.setLayoutManager(LinearLayoutManager(activity))
+        mRecycler?.setAdapterWithLoading(mAdapter)
     }
 
     inner class Presenter {
@@ -88,6 +105,7 @@ class HomeFragment : BaseFragment() {
     }
 }
 
+private operator fun  Any.setValue(homeFragment: HomeFragment, property: KProperty<*>, relativeLayout: RelativeLayout) {}
 private operator fun  Any.setValue(homeFragment: HomeFragment, property: KProperty<*>, toolbar: Toolbar) {}
 private operator fun  Any.setValue(homeFragment: HomeFragment, property: KProperty<*>, practicalRecyclerView: PracticalRecyclerView) {}
 private operator fun  Any.setValue(homeFragment: HomeFragment, property: KProperty<*>, floatingActionButton: FloatingActionButton) {}
