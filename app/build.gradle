@@ -54,7 +54,9 @@ dependencies {
     compile 'com.facebook.fresco:animated-gif:1.1.0'
     compile 'me.relex:photodraweeview:1.1.2'
 
+    compile 'org.greenrobot:eventbus:3.0.0'
     compile 'com.tencent.bugly:crashreport_upgrade:latest.release'
+    compile 'uk.co.chrisjenx:calligraphy:2.2.0'
 
     //butterknife
     compile "com.jakewharton:butterknife:$rootProject.versions.libButterKnife"

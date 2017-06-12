@@ -5,6 +5,7 @@
     <color name="colorAccent">#ff03e6</color>
 
     <color name="bg">#EFEFF4</color>
+    <color name="light">#FFFFFF</color>
     <color name="icon">#6B6B76</color>
     <color name="caption">#54000000</color>
 

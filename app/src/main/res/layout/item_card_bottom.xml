@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:text="2222"
+        android:text="55555"
         android:textColor="@color/icon" />
 
     <ImageView
@@ -30,7 +30,7 @@
         android:layout_centerVertical="true"
         android:layout_marginRight="@dimen/dp16"
         android:layout_toLeftOf="@id/eyeImg"
-        android:text="22"
+        android:text="4444"
         android:textColor="@color/icon" />
 
     <ImageView
@@ -49,7 +49,7 @@
         android:layout_centerVertical="true"
         android:layout_marginRight="@dimen/dp16"
         android:layout_toLeftOf="@id/commentImg"
-        android:text="144"
+        android:text="333"
         android:textColor="@color/icon" />
 
     <ImageView
@@ -103,7 +103,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dp8"
-            android:text="2"
+            android:text="22"
             android:textColor="@color/icon" />
     </LinearLayout>
 

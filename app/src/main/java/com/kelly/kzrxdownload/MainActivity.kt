@@ -53,8 +53,8 @@ class MainActivity : AppCompatActivity() {
         fun onClick(view: View) {
             when (view.id) {
                 R.id.fab -> Toast.makeText(this@MainActivity, "Why did you click me?", Toast.LENGTH_SHORT).show()
-                R.id.single_task_download -> startActivity(Intent(this@MainActivity, MultiDownloadActivity::class.java))
-                R.id.multi_task_download -> startActivity(Intent(this@MainActivity, MultiDownloadActivity::class.java))
+                R.id.single_task_download -> startActivity(Intent(this@MainActivity, HomeActivity::class.java))
+                R.id.multi_task_download -> startActivity(Intent(this@MainActivity, HomeActivity::class.java))
             }
         }
     }

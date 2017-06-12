@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.kelly.kzrxdownload.fragment.HomeFragment" />
+
+        <variable
+            name="presenter"
+            type="HomeFragment.Presenter" />
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:context="com.kelly.kzrxdownload.fragment.HomeFragment">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:layout_scrollFlags="scroll|snap"
+                app:navigationIcon="@drawable/ic_menu_light_24dp"
+                app:popupTheme="@style/AppTheme.PopupOverlay"
+                app:title="@string/string_fragment_home" />
+
+        </android.support.design.widget.AppBarLayout>
+
+        <include layout="@layout/content_fragment_home" />
+        <!--<RelativeLayout
+            android:id="@+id/content_app_market"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <zlc.season.practicalrecyclerview.PracticalRecyclerView
+                android:id="@+id/recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </zlc.season.practicalrecyclerview.PracticalRecyclerView>
+        </RelativeLayout>-->
+
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            android:onClick="@{(v)->presenter.onClick(v)}"
+            app:srcCompat="@android:drawable/ic_dialog_email" />
+
+    </android.support.design.widget.CoordinatorLayout>
+</layout>
