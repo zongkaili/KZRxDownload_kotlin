@@ -13,7 +13,9 @@ import com.kelly.kzrxdownload.DownloadManagerActivity
 import com.kelly.kzrxdownload.R
 import com.kelly.kzrxdownload.adapter.AppInfoAdapter
 import com.kelly.kzrxdownload.model.AppInfoBean
+import com.twobbble.event.OpenDrawerEvent
 import com.twobbble.view.fragment.BaseFragment
+import org.greenrobot.eventbus.EventBus
 import zlc.season.practicalrecyclerview.PracticalRecyclerView
 import zlc.season.rxdownload2.function.Utils
 import java.util.ArrayList
@@ -38,6 +40,7 @@ class HomeFragment : BaseFragment() {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         init()
+        initView()
         loadData()
     }
 
@@ -67,6 +70,10 @@ class HomeFragment : BaseFragment() {
         mRecycler?.setAdapterWithLoading(mAdapter)
     }
 
+    private fun initView() {
+        mToolbar.inflateMenu(R.menu.menu_download_manage)
+    }
+
     inner class Presenter {
         fun onClick(view: View) {
             when (view.id) {
@@ -76,10 +83,15 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun bindEvent() {
-        mFab?.setOnClickListener { v: View? -> Toast.makeText(activity,"Why did you click me?", Toast.LENGTH_SHORT).show() }
+        mFab.setOnClickListener { v: View? -> Toast.makeText(activity,"Why did you click me?", Toast.LENGTH_SHORT).show() }
         mToolbar.setNavigationOnClickListener {
-            Toast.makeText(activity,"Why did you click me?", Toast.LENGTH_SHORT).show()
-//            EventBus.getDefault().post(OpenDrawerEvent())
+            EventBus.getDefault().post(OpenDrawerEvent())
+        }
+        mToolbar.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.action_download_manage -> startActivity(Intent(activity,DownloadManagerActivity::class.java))
+            }
+            true
         }
     }
 

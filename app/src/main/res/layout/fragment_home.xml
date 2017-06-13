@@ -37,20 +37,6 @@
         </android.support.design.widget.AppBarLayout>
 
         <include layout="@layout/content_fragment_home" />
-        <!--<RelativeLayout
-            android:id="@+id/content_app_market"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-            <zlc.season.practicalrecyclerview.PracticalRecyclerView
-                android:id="@+id/recycler"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-            </zlc.season.practicalrecyclerview.PracticalRecyclerView>
-        </RelativeLayout>-->
-
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"

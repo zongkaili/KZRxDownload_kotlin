@@ -21,7 +21,6 @@ import zlc.season.rxdownload2.function.Utils
 import kotlin.reflect.KProperty
 
 class DownloadManagerActivity : AppCompatActivity() {
-
    var mToolbar: Toolbar by bindView(R.id.toolbar)
    var mRecycler: PracticalRecyclerView by bindView(R.id.recycler)
 

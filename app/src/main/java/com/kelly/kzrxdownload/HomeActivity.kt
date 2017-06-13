@@ -2,8 +2,6 @@ package com.kelly.kzrxdownload
 
 import android.app.Fragment
 import android.content.Intent
-import android.databinding.DataBindingUtil
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
@@ -13,11 +11,12 @@ import android.view.*
 import android.widget.Toast
 import butterknife.ButterKnife
 import butterknife.bindView
-import com.kelly.kzrxdownload.databinding.ActivityHomeBinding
 import com.kelly.kzrxdownload.fragment.ExploreFragment
 import com.kelly.kzrxdownload.fragment.HomeFragment
+import com.twobbble.event.OpenDrawerEvent
 import com.twobbble.view.activity.BaseActivity
 import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
 import zlc.season.rxdownload2.RxDownload
 import zlc.season.rxdownload2.function.Utils
 import kotlin.reflect.KProperty
@@ -32,10 +31,10 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_d)
+        setContentView(R.layout.activity_home)
         ButterKnife.bind(this)
         init()
-//      EventBus.getDefault().register(this)
+        EventBus.getDefault().register(this)
         Utils.setDebug(true)
         RxDownload.getInstance(this)
                 .maxDownloadNumber(2)
@@ -75,19 +74,6 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 .commit()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_download_manage,menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when(item?.itemId){
-            android.R.id.home-> finish()
-            R.id.action_download_manage -> startActivity(Intent(this,DownloadManagerActivity::class.java))
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
         mHomeFragment?.onKeyDown(keyCode, event)
         mExploreFragment?.onKeyDown(keyCode, event)
@@ -109,13 +95,10 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     override fun onDestroy() {
         super.onDestroy()
-//        EventBus.getDefault().unregister(this)
+        EventBus.getDefault().unregister(this)
     }
 
     private fun bindEvent(){
-//        mToolbar.setNavigationOnClickListener {
-//            EventBus.getDefault().post(OpenDrawerEvent())
-//        }
         mNavigation.setNavigationItemSelectedListener(this)
         mDrawerLayout.addDrawerListener(object : DrawerLayout.DrawerListener {
             override fun onDrawerStateChanged(newState: Int) {}
@@ -124,6 +107,10 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             override fun onDrawerOpened(drawerView: View?) {
             }
         })
+    }
+
+    @Subscribe fun DrawerOpen(drawerEvent: OpenDrawerEvent?) {
+        mDrawerLayout.openDrawer(GravityCompat.START)
     }
 
     inner class Presenter {
