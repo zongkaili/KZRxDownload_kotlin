@@ -22,6 +22,9 @@ import zlc.season.rxdownload2.entity.DownloadFlag
 import zlc.season.rxdownload2.function.Utils
 
 import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
+import android.support.v7.widget.CardView
 import android.view.View
 import butterknife.bindView
 import com.facebook.drawee.view.SimpleDraweeView
@@ -38,6 +41,7 @@ class AppInfoViewHolder(parent: ViewGroup) : AbstractViewHolder<AppInfoBean>(par
     var mContent: TextView by bindView(R.id.content)
     var mAction: Button by bindView(R.id.action)
     var mContentImg: SimpleDraweeView by bindView(R.id.mContentImg)
+    var mItemCard: CardView by bindView(R.id.mItemCard)
 
     private var mData: AppInfoBean? = null
     private val mDownloadController: DownloadController
@@ -101,25 +105,6 @@ class AppInfoViewHolder(parent: ViewGroup) : AbstractViewHolder<AppInfoBean>(par
         }) }
     }
 
-    //TODO 此注解不起作用
-    @OnClick(R.id.action)
-    fun onClick() {
-        mDownloadController.handleClick(object : DownloadController.Callback {
-            override fun startDownload() {
-                start()
-            }
-
-            override fun pauseDownload() {
-                pause()
-            }
-
-            override fun install() {
-                installApk()
-            }
-        })
-    }
-
-
     private fun start() {
         RxPermissions.getInstance(mContext)
                 .request(WRITE_EXTERNAL_STORAGE)
@@ -148,8 +133,20 @@ class AppInfoViewHolder(parent: ViewGroup) : AbstractViewHolder<AppInfoBean>(par
             Toast.makeText(mContext, "File not exists", Toast.LENGTH_SHORT).show()
         }
     }
+
+    fun addItemAnimation() {
+        val scaleX = ObjectAnimator.ofFloat(mItemCard, "translationY", 500f, 0f)
+        val scaleY = ObjectAnimator.ofFloat(mItemCard, "scaleY", 0.5f, 1f)
+        val set = AnimatorSet()
+        set.playTogether(scaleX, scaleY)
+        scaleX.duration = 1000
+        scaleY.duration = 1000
+        scaleX.start()
+        scaleY.start()
+    }
 }
 
+private operator fun Any.setValue(appInfoViewHolder: AppInfoViewHolder, property: KProperty<*>, cardView: CardView) {}
 private operator fun Any.setValue(appInfoViewHolder: AppInfoViewHolder, property: KProperty<*>, simpleDraweeView: SimpleDraweeView) {}
 private operator fun Any.setValue(appInfoViewHolder: AppInfoViewHolder, property: KProperty<*>, textView: TextView) {}
 private operator fun Any.setValue(appInfoViewHolder: AppInfoViewHolder, property: KProperty<*>, button: Button) {}
