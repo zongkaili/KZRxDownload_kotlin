@@ -18,6 +18,11 @@
     <string name="cancel">Cancel</string>
     <string name="nav_title">Name</string>
 
+    <!--setting-->
+    <string name="setting">setting</string>
+    <string name="all_start">all start</string>
+    <string name="all_suspended">all suspended</string>
+
     <string-array name="name">
         <item>QQ</item>
         <item>网易云音乐</item>

@@ -4,13 +4,12 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.Toolbar
+import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 
 import java.util.ArrayList
 
 import butterknife.ButterKnife
-import butterknife.OnClick
 import butterknife.bindView
 import com.kelly.kzrxdownload.adapter.DownloadAdapter
 import com.kelly.kzrxdownload.model.DownloadItem
@@ -40,6 +39,12 @@ class DownloadManagerActivity : AppCompatActivity() {
         mRecycler!!.setLayoutManager(LinearLayoutManager(this))
         mRecycler!!.setAdapterWithLoading(mAdapter)
         loadData()
+        bindEvent()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_expolre,menu)
+        return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
@@ -49,18 +54,20 @@ class DownloadManagerActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    @OnClick(R.id.start, R.id.pause)
-    fun onClick(view: View) {
+    private fun bindEvent() {
         val list = mAdapter!!.getData()
-        when (view.id) {
-            R.id.start -> for (each in list) {
-                rxDownload!!.serviceDownload(each.record.getUrl())
-                        .subscribe(Consumer<Any> { }, Consumer<Throwable> { throwable -> Utils.log(throwable) })
+        mToolbar.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.all_start -> for (each in list) {
+                    rxDownload!!.serviceDownload(each.record.getUrl())
+                            .subscribe(Consumer<Any> { }, Consumer<Throwable> { throwable -> Utils.log(throwable) })
+                }
+                R.id.all_suspended -> for (each in list) {
+                    rxDownload!!.pauseServiceDownload(each.record.getUrl())
+                            .subscribe({ }) { throwable -> Utils.log(throwable) }
+                }
             }
-            R.id.pause -> for (each in list) {
-                rxDownload!!.pauseServiceDownload(each.record.getUrl())
-                        .subscribe({ }) { throwable -> Utils.log(throwable) }
-            }
+            true
         }
     }
 

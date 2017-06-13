@@ -10,29 +10,6 @@
     tools:context=".DownloadManagerActivity"
     tools:showIn="@layout/activity_download_manager">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="right"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/start"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:text="全部开始"
-            android:textColor="@color/colorAccent" />
-
-        <Button
-            android:id="@+id/pause"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:text="全部暂停"
-            android:textColor="@color/colorAccent" />
-    </LinearLayout>
-
     <zlc.season.practicalrecyclerview.PracticalRecyclerView
         android:id="@+id/recycler"
         android:layout_width="match_parent"
