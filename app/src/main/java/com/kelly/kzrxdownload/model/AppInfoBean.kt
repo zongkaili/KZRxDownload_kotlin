@@ -3,7 +3,7 @@ package com.kelly.kzrxdownload.model
 import io.reactivex.disposables.Disposable
 import zlc.season.practicalrecyclerview.ItemType
 
-class AppInfoBean(var name: String, var img: String, var info: String, var downloadUrl: String) : ItemType {
+class AppInfoBean(var name: String, var avatar: String, var info: String, var img: String, var downloadUrl: String) : ItemType {
     var saveName: String
     var disposable: Disposable? = null
 

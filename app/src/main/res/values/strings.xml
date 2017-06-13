@@ -31,7 +31,7 @@
         <item>知乎日报</item>
     </string-array>
 
-    <string-array name="image">
+    <string-array name="avatar">
         <item>http://static.yingyonghui.com/icon/128/4189733.png</item>
         <item>http://static.yingyonghui.com/icon/128/4143651.png</item>
         <item>http://static.yingyonghui.com/icon/128/4256143.png</item>
@@ -45,6 +45,14 @@
         <item>今日头条是一款基于数据挖掘的推荐引擎产品，它为用户推荐有价值的、个性化的信息，提供连接人与信息的新型服务，是国内移动互联网领域成长最快的产品服务之一。</item>
         <item>知乎是一个真实的网络问答社区，社区氛围友好与理性，连接各行各业的精英。</item>
         <item>知乎日报是一款拥有千万用户的资讯类客户端，每日提供来自知乎社区的精选问答，还有国内一流媒体的专栏特稿。</item>
+    </string-array>
+
+    <string-array name="image">
+        <item>https://cdn.dribbble.com/users/52084/screenshots/3556593/hcn_1x.jpg</item>
+        <item>https://cdn.dribbble.com/users/52084/screenshots/3556593/hcn_1x.jpg</item>
+        <item>https://cdn.dribbble.com/users/52084/screenshots/3556593/hcn_1x.jpg</item>
+        <item>https://cdn.dribbble.com/users/52084/screenshots/3556593/hcn_1x.jpg</item>
+        <item>https://cdn.dribbble.com/users/52084/screenshots/3556593/hcn_1x.jpg</item>
     </string-array>
 
     <string-array name="url">

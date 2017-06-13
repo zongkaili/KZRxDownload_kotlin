@@ -54,11 +54,11 @@ class HomeFragment : BaseFragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
-        activity.menuInflater.inflate(R.menu.menu_download_manage,menu)
+        activity.menuInflater.inflate(R.menu.menu_download_manage, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when(item?.itemId){
+        when (item?.itemId) {
             R.id.action_download_manage -> startActivity(Intent(activity, DownloadManagerActivity::class.java))
         }
         return super.onOptionsItemSelected(item)
@@ -83,13 +83,13 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun bindEvent() {
-        mFab.setOnClickListener { v: View? -> Toast.makeText(activity,"Why did you click me?", Toast.LENGTH_SHORT).show() }
+        mFab.setOnClickListener { v: View? -> Toast.makeText(activity, "Why did you click me?", Toast.LENGTH_SHORT).show() }
         mToolbar.setNavigationOnClickListener {
             EventBus.getDefault().post(OpenDrawerEvent())
         }
         mToolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
-                R.id.action_download_manage -> startActivity(Intent(activity,DownloadManagerActivity::class.java))
+                R.id.action_download_manage -> startActivity(Intent(activity, DownloadManagerActivity::class.java))
             }
             true
         }
@@ -98,12 +98,13 @@ class HomeFragment : BaseFragment() {
     fun loadData() {
         val res = resources
         val names = res.getStringArray(R.array.name)
-        val images = res.getStringArray(R.array.image)
+        val avatars = res.getStringArray(R.array.avatar)
         val infos = res.getStringArray(R.array.info)
+        val imgs = res.getStringArray(R.array.image)
         val urls = res.getStringArray(R.array.url)
         val list = ArrayList<AppInfoBean>()
-        for (i in images.indices) {
-            val temp = AppInfoBean(names[i], images[i], infos[i], urls[i])
+        for (i in avatars.indices) {
+            val temp = AppInfoBean(names[i], avatars[i], infos[i], imgs[i], urls[i])
             list.add(temp)
         }
         mAdapter?.clear()
@@ -117,7 +118,7 @@ class HomeFragment : BaseFragment() {
     }
 }
 
-private operator fun  Any.setValue(homeFragment: HomeFragment, property: KProperty<*>, relativeLayout: RelativeLayout) {}
-private operator fun  Any.setValue(homeFragment: HomeFragment, property: KProperty<*>, toolbar: Toolbar) {}
-private operator fun  Any.setValue(homeFragment: HomeFragment, property: KProperty<*>, practicalRecyclerView: PracticalRecyclerView) {}
-private operator fun  Any.setValue(homeFragment: HomeFragment, property: KProperty<*>, floatingActionButton: FloatingActionButton) {}
+private operator fun Any.setValue(homeFragment: HomeFragment, property: KProperty<*>, relativeLayout: RelativeLayout) {}
+private operator fun Any.setValue(homeFragment: HomeFragment, property: KProperty<*>, toolbar: Toolbar) {}
+private operator fun Any.setValue(homeFragment: HomeFragment, property: KProperty<*>, practicalRecyclerView: PracticalRecyclerView) {}
+private operator fun Any.setValue(homeFragment: HomeFragment, property: KProperty<*>, floatingActionButton: FloatingActionButton) {}

@@ -9,11 +9,9 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 
-import com.squareup.picasso.Picasso
 import com.tbruyelle.rxpermissions2.RxPermissions
 
 import butterknife.ButterKnife
-import butterknife.OnClick
 import io.reactivex.functions.Consumer
 import zlc.season.practicalrecyclerview.AbstractViewHolder
 import zlc.season.rxdownload2.RxDownload
@@ -60,16 +58,15 @@ class AppInfoViewHolder(parent: ViewGroup) : AbstractViewHolder<AppInfoBean>(par
 
     override fun setData(data: AppInfoBean) {
         this.mData = data
-        FrescoUtil.frescoLoadCircle(mHead, data.img)
-        FrescoUtil.frescoLoadNormal(mContentImg, null,
-                "https://cdn.dribbble.com/users/52084/screenshots/3556593/hcn_1x.jpg", null)
+        FrescoUtil.frescoLoadCircle(mHead, data.avatar)
+        FrescoUtil.frescoLoadNormal(mContentImg, null,data.img, null)
         mTitle!!.setText(data.name)
         mContent!!.setText(data.info)
 
         downloadBean = DownloadBean.Builder(data.downloadUrl)
                 .setSaveName(null)      //not need.
                 .setSavePath(null)      //not need
-                .setExtra1(mData!!.img)   //save extra info into database.
+                .setExtra1(mData!!.avatar)   //save extra info into database.
                 .setExtra2(mData!!.name)  //save extra info into database.
                 .build()
 

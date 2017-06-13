@@ -38,6 +38,7 @@ import butterknife.bindView
 import com.kelly.kzrxdownload.R
 import com.kelly.kzrxdownload.model.DownloadController
 import com.kelly.kzrxdownload.model.DownloadItem
+import com.kelly.kzrxdownload.ui.NumberProgressBar
 import zlc.season.rxdownload2.function.Utils.dispose
 import zlc.season.rxdownload2.function.Utils.empty
 import zlc.season.rxdownload2.function.Utils.log
@@ -46,7 +47,7 @@ import kotlin.reflect.KProperty
 class DownloadViewHolder(parent: ViewGroup, private val mAdapter: AbstractAdapter<*, *>) : AbstractViewHolder<DownloadItem>(parent, R.layout.item_download_manager) {
     var mImg: ImageView by bindView(R.id.img)
     var mPercent: TextView by bindView(R.id.percent)
-    var mProgress: ProgressBar by bindView(R.id.progress)
+    var mProgress: NumberProgressBar by bindView(R.id.progress)
     var mSize: TextView by bindView(R.id.size)
     var mStatusText: TextView by bindView(R.id.status)
     var mActionButton: Button by bindView(R.id.action)
@@ -136,7 +137,7 @@ class DownloadViewHolder(parent: ViewGroup, private val mAdapter: AbstractAdapte
     }*/
 
     private fun updateProgressStatus(status: DownloadStatus) {
-        mProgress!!.isIndeterminate = status.isChunked
+//        mProgress!!.isIndeterminate = status.isChunked
         mProgress!!.max = status.totalSize.toInt()
         mProgress!!.progress = status.downloadSize.toInt()
         mPercent!!.text = status.percent
@@ -197,8 +198,7 @@ class DownloadViewHolder(parent: ViewGroup, private val mAdapter: AbstractAdapte
     }
 }
 
+private operator fun Any.setValue(downloadViewHolder: DownloadViewHolder, property: KProperty<*>, numberProgressBar: NumberProgressBar) {}
 private operator fun Any.setValue(downloadViewHolder: DownloadViewHolder, property: KProperty<*>, progressBar: ProgressBar) {}
-
 private operator fun Any.setValue(downloadViewHolder: DownloadViewHolder, property: KProperty<*>, textView: TextView) {}
-
 private operator fun Any.setValue(downloadViewHolder: DownloadViewHolder, property: KProperty<*>, imageView: ImageView) {}
