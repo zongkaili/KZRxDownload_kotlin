@@ -6,15 +6,15 @@
 ![gif](https://github.com/zongkaili/KZRxDownload_kotlin/blob/master/screen/device-2017-06-15-141737.gif)
 
 ## 包含技术
-kotlin
-Facebook Fresco
-Tencent Bugly
-Vector矢量图
-Eventbus
-Butterknife
-Kotterknife
-Rxpermissions2
-Rxjava2
+kotlin</br>
+Facebook Fresco</br>
+Tencent Bugly</br>
+Vector矢量图</br>
+Eventbus</br>
+Butterknife</br>
+Kotterknife</br>
+Rxpermissions2</br>
+Rxjava2</br>
 
 ## 使用方式
 
