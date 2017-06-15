@@ -15,31 +15,11 @@ Butterknife</br>
 Kotterknife</br>
 Rxpermissions2</br>
 Rxjava2</br>
+Rxdownload2
 
-## 使用方式
+### 部分代码
 
-### 准备工作
-
-1.添加Gradle依赖[ ![Download](https://api.bintray.com/packages/ssseasonnn/android/RxDownload2/images/download.svg) ](https://bintray.com/ssseasonnn/android/RxDownload2/_latestVersion)
-
-```groovy
-	dependencies{
-         compile 'zlc.season:rxdownload2:2.0.2'
-	}
-```
-
-2.配置权限
-
-```xml
- 	<!-- 在XML中设置权限 -->
-	<uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-```
-
-> **注意: Android 6.0 以上还必须申请运行时权限, 如果遇到不能下载, 请先检查权限**
-
-2.butterknife在绑定view和data上的使用
+butterknife在绑定view和data上的使用
 
 在根目录的gradle配置文件中引用butterknife的gradle插件：
 ```groovy
