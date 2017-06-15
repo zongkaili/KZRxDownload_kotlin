@@ -1,16 +1,20 @@
 # KZRxDownload
 
 ## 效果图
-<!--![imgge](https://github.com/zongkaili/Twobbble/blob/master/image/image1.png?raw=true)-->
-<!--![imgge](https://github.com/550609334/Twobbble/blob/master/image/image1.png?raw=true)-->
-<!--![imgge](https://github.com/550609334/Twobbble/blob/master/image/image1.png?raw=true)-->
+![imgge](https://github.com/zongkaili/KZRxDownload_kotlin/blob/master/screen/img1.jpg)
+![imgge](https://github.com/zongkaili/KZRxDownload_kotlin/blob/master/screen/img2.jpg)
+![gif](https://github.com/zongkaili/KZRxDownload_kotlin/blob/master/screen/device-2017-06-15-141737.gif)
 
 ## 包含技术
 kotlin
 Facebook Fresco
 Tencent Bugly
 Vector矢量图
-
+Eventbus
+Butterknife
+Kotterknife
+Rxpermissions2
+Rxjava2
 
 ## 使用方式
 
