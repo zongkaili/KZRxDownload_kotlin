@@ -7,7 +7,6 @@ import android.support.v7.widget.ListPopupWindow
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ImageView
@@ -18,17 +17,10 @@ import android.widget.Toast
 import com.squareup.picasso.Picasso
 import com.tbruyelle.rxpermissions2.RxPermissions
 
-import java.io.File
-
-import butterknife.BindView
 import butterknife.ButterKnife
-import butterknife.OnClick
-import io.reactivex.functions.Action
-import io.reactivex.functions.Consumer
 import zlc.season.practicalrecyclerview.AbstractAdapter
 import zlc.season.practicalrecyclerview.AbstractViewHolder
 import zlc.season.rxdownload2.RxDownload
-import zlc.season.rxdownload2.entity.DownloadEvent
 import zlc.season.rxdownload2.entity.DownloadFlag
 import zlc.season.rxdownload2.entity.DownloadStatus
 import zlc.season.rxdownload2.function.Utils
@@ -47,7 +39,7 @@ import kotlin.reflect.KProperty
 class DownloadViewHolder(parent: ViewGroup, private val mAdapter: AbstractAdapter<*, *>) : AbstractViewHolder<DownloadItem>(parent, R.layout.item_download_manager) {
     var mImg: ImageView by bindView(R.id.img)
     var mPercent: TextView by bindView(R.id.percent)
-    var mProgress: NumberProgressBar by bindView(R.id.progress)
+    var mProgress: ProgressBar by bindView(R.id.progress)
     var mSize: TextView by bindView(R.id.size)
     var mStatusText: TextView by bindView(R.id.status)
     var mActionButton: Button by bindView(R.id.action)
@@ -137,7 +129,7 @@ class DownloadViewHolder(parent: ViewGroup, private val mAdapter: AbstractAdapte
     }*/
 
     private fun updateProgressStatus(status: DownloadStatus) {
-//        mProgress!!.isIndeterminate = status.isChunked
+        mProgress!!.isIndeterminate = status.isChunked
         mProgress!!.max = status.totalSize.toInt()
         mProgress!!.progress = status.downloadSize.toInt()
         mPercent!!.text = status.percent

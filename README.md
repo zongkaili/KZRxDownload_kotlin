@@ -1,6 +1,9 @@
 # KZRxDownload
 
 ## 效果图
+<!--![imgge](https://github.com/zongkaili/Twobbble/blob/master/image/image1.png?raw=true)-->
+<!--![imgge](https://github.com/550609334/Twobbble/blob/master/image/image1.png?raw=true)-->
+<!--![imgge](https://github.com/550609334/Twobbble/blob/master/image/image1.png?raw=true)-->
 
 ## 包含技术
 kotlin

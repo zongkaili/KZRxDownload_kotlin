@@ -6,9 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
-
 import java.util.ArrayList
-
 import butterknife.ButterKnife
 import butterknife.bindView
 import com.kelly.kzrxdownload.adapter.DownloadAdapter

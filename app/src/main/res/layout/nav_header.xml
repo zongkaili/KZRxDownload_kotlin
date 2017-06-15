@@ -6,7 +6,7 @@
     android:elevation="@dimen/dp8"
     android:gravity="bottom">
 
-    <ImageView
+    <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/mHeadimg"
         android:layout_width="match_parent"
         android:layout_height="180dp"

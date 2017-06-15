@@ -1,7 +1,6 @@
 package com.kelly.kzrxdownload
 
 import android.app.Fragment
-import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
@@ -11,6 +10,7 @@ import android.view.*
 import android.widget.Toast
 import butterknife.ButterKnife
 import butterknife.bindView
+import com.facebook.drawee.view.SimpleDraweeView
 import com.kelly.kzrxdownload.fragment.ExploreFragment
 import com.kelly.kzrxdownload.fragment.HomeFragment
 import com.twobbble.event.OpenDrawerEvent
@@ -28,6 +28,7 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     private var mDrawerLayout: DrawerLayout by bindView(R.id.mDrawerLayout)
     private var mNavigation: NavigationView by bindView(R.id.mNavigation)
+//    private var mHeadimg: SimpleDraweeView by bindView(R.id.mHeadimg)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +56,7 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         var params = mNavigation.layoutParams
         params.width = screenWidth - screenWidth / 4
         mNavigation.layoutParams = params
+
     }
 
     private fun initFragment() {
@@ -151,5 +153,6 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 }
 
+private operator fun  Any.setValue(homeActivity: HomeActivity, property: KProperty<*>, simpleDraweeView: SimpleDraweeView) {}
 private operator fun  Any.setValue(homeActivity: HomeActivity, property: KProperty<*>, navigationView: NavigationView) {}
 private operator fun  Any.setValue(homeActivity: HomeActivity, property: KProperty<*>, drawerLayout: DrawerLayout) {}

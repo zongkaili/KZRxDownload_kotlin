@@ -61,15 +61,13 @@
                 android:text="0.00%"/>
         </LinearLayout>
 
-
-        <com.kelly.kzrxdownload.ui.NumberProgressBar
+        <ProgressBar
             android:id="@+id/progress"
-            style="@style/NumberProgressBar_Default"
-            android:layout_width="wrap_content"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="2dp"
-            custom:progress_current="0"/>
-
+            android:layout_gravity="center"
+            android:progressTint="@color/colorPrimary"/>
 
         <LinearLayout
             android:layout_width="match_parent"
